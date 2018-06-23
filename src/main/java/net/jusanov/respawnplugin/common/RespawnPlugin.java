@@ -26,7 +26,7 @@ public class RespawnPlugin extends JavaPlugin {
 		config.addDefault("itemToRespawn", "coal");
 		config.addDefault("respawnItemAmount", 64);
 		config.addDefault("addItemToMainHand", false);
-		config.addDefault("respawnItemSlot", 9)
+		config.addDefault("respawnItemSlot", 9);
 		config.addDefault("closeInventory", true);
 		
 		// Click to respawn
