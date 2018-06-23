@@ -35,7 +35,7 @@ public class PlayerDeathListener implements Listener {
 			// Update Inventory
 			player.getInventory().clear();
 			if (plugin.getConfig().getBoolean("giveItemToRespawn") == true) {
-				player.getInventory().addItem(new ItemStack(Material.matchMaterial(plugin.getConfig().getString("itemToRespawn")), 1));
+				player.getInventory().addItem(new ItemStack(Material.matchMaterial(plugin.getConfig().getString("itemToRespawn")), plugin.getConfig().getInt("respawnItemAmount")));
 			}
 			player.updateInventory();
 			

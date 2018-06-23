@@ -18,6 +18,7 @@ public class RespawnPlugin extends JavaPlugin {
 		config.addDefault("disallowMovement", true);
 		config.addDefault("giveItemToRespawn", true);
 		config.addDefault("itemToRespawn", "coal");
+		config.addDefault("respawnItemAmount", 64);
 		config.addDefault("closeInventory", true);
 		
 		config.options().copyDefaults(true);
