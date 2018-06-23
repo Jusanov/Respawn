@@ -11,15 +11,28 @@ public class RespawnPlugin extends JavaPlugin {
 	public void onEnable() {
 		
 		// Setup Config
+		
+		// Title
 		config.addDefault("titleEnabled", true);
 		config.addDefault("titleMainTitle", "§4You have died!");
 		config.addDefault("titleSubTitle", "§7Click to respawn.");
 		config.addDefault("titleDuration", 200);
+		
+		// Movement
 		config.addDefault("disallowMovement", true);
-		config.addDefault("giveItemToRespawn", true);
+		
+		// Inventory
+		config.addDefault("giveItemToRespawn", false);
 		config.addDefault("itemToRespawn", "coal");
 		config.addDefault("respawnItemAmount", 64);
+		config.addDefault("addItemToMainHand", false);
+		config.addDefault("respawnItemSlot", 9)
 		config.addDefault("closeInventory", true);
+		
+		// Click to respawn
+		config.addDefault("respawnClick", true);
+		config.addDefault("respawnCommands", new String[]{"gms", "spawn"});
+		config.addDefault("automaticGamemodeUpdate", true);
 		
 		config.options().copyDefaults(true);
 		saveConfig();

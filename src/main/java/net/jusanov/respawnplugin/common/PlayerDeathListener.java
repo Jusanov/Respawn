@@ -1,5 +1,7 @@
 package net.jusanov.respawnplugin.common;
 
+import java.util.List;
+
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -9,6 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -35,7 +38,11 @@ public class PlayerDeathListener implements Listener {
 			// Update Inventory
 			player.getInventory().clear();
 			if (plugin.getConfig().getBoolean("giveItemToRespawn") == true) {
-				player.getInventory().addItem(new ItemStack(Material.matchMaterial(plugin.getConfig().getString("itemToRespawn")), plugin.getConfig().getInt("respawnItemAmount")));
+				if (plugin.getConfig().getBoolean("addItemToMainHand") == true) {
+					player.getInventory().addItem(new ItemStack(Material.matchMaterial(plugin.getConfig().getString("itemToRespawn")), plugin.getConfig().getInt("respawnItemAmount")));
+				} else {
+					player.getInventory().setItem(9, new ItemStack(Material.matchMaterial(plugin.getConfig().getString("itemToRespawn")), plugin.getConfig().getInt("respawnItemAmount")));
+				}
 			}
 			player.updateInventory();
 			
@@ -73,9 +80,38 @@ public class PlayerDeathListener implements Listener {
 	@EventHandler
 	public void onInventoryOpen(InventoryOpenEvent event) {
 		
-		if (plugin.getConfig().getBoolean("closeInventory") == true) {
+		if (event.getPlayer().getGameMode() == GameMode.SPECTATOR) {
 			
-			event.getPlayer().closeInventory();
+			if (plugin.getConfig().getBoolean("closeInventory") == true) {
+				
+				event.getPlayer().closeInventory();
+				
+			}
+			
+		}
+		
+	}
+	
+	@EventHandler
+	public void onClick(PlayerInteractEvent event) {
+		
+		if (plugin.getConfig().getBoolean("respawnClick") == true) {
+			
+			if (event.getPlayer().getGameMode() == GameMode.SPECTATOR) {
+				
+				// Automatic Gamemode Update
+				event.getPlayer().setGameMode(GameMode.SURVIVAL);
+				
+				// Execute Commands
+				List<String> commands = plugin.getConfig().getStringList("respawnCommands");
+				
+				for (int i = 0; i < commands.size(); i++) {
+					
+					event.getPlayer().performCommand(commands.get(i));
+					
+				}
+			
+			}
 			
 		}
 		
