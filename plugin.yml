@@ -1,0 +1,6 @@
+name: SpigotBlankPlugin
+main: net.jusanov.respawnplugin.common.RespawnPlugin
+version: 0.0.3
+commands:
+author: Jusanov
+website: jusanov.net
