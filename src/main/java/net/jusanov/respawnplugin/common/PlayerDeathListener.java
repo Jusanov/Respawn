@@ -100,7 +100,9 @@ public class PlayerDeathListener implements Listener {
 			if (event.getPlayer().getGameMode() == GameMode.SPECTATOR) {
 				
 				// Automatic Gamemode Update
-				event.getPlayer().setGameMode(GameMode.SURVIVAL);
+				if (plugin.getConfig().getBoolean("automaticGamemodeUpdate") == true) {
+					event.getPlayer().setGameMode(GameMode.SURVIVAL);
+				}
 				
 				// Execute Commands
 				List<String> commands = plugin.getConfig().getStringList("respawnCommands");
