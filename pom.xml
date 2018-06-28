@@ -6,6 +6,15 @@
   <name>Respawn</name>
   <description>Change a player's gamemode when they die in order to prevent game-devastating bugs.</description>
   <build>
+  	<defaultGoal>package</defaultGoal>
+  	<resources>
+  	  <resource>
+  	  	<directory>${project.basedir}</directory>
+  		<includes>
+  		  <include>plugin.yml</include>
+  		</includes>
+  	  </resource>
+  	</resources>
   	<plugins>
   	  <plugin>
   	  	<groupId>org.apache.maven.plugins</groupId>
