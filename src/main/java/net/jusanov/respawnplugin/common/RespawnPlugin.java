@@ -14,8 +14,8 @@ public class RespawnPlugin extends JavaPlugin {
 		
 		// Title
 		config.addDefault("titleEnabled", true);
-		config.addDefault("titleMainTitle", "ง4You have died!");
-		config.addDefault("titleSubTitle", "ง7Click to respawn.");
+		config.addDefault("titleMainTitle", "ยง4You have died!");
+		config.addDefault("titleSubTitle", "ยง7Respawning in %t%");
 		config.addDefault("titleDuration", 200);
 		
 		// Movement
@@ -30,9 +30,14 @@ public class RespawnPlugin extends JavaPlugin {
 		config.addDefault("closeInventory", true);
 		
 		// Click to respawn
-		config.addDefault("respawnClick", true);
+		config.addDefault("respawnClick", false);
 		config.addDefault("respawnCommands", new String[]{"gms", "spawn"});
 		config.addDefault("automaticGamemodeUpdate", true);
+		config.addDefault("gamemode", 0);
+		
+		// Automatic Respawn
+		config.addDefault("automaticRespawn", true);
+		config.addDefault("automaticRespawnTimer", 10);
 		
 		config.options().copyDefaults(true);
 		saveConfig();

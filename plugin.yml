@@ -1,6 +1,5 @@
 name: Respawn
 main: net.jusanov.respawnplugin.common.RespawnPlugin
-version: 0.1.1
-commands:
+version: 0.1.2
 author: Jusanov
 website: jusanov.net
