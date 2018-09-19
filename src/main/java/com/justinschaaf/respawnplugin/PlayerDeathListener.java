@@ -1,4 +1,4 @@
-package net.jusanov.respawnplugin.common;
+package com.justinschaaf.respawnplugin;
 
 import java.util.List;
 
